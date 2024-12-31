@@ -1,0 +1,7 @@
+﻿{
+  "telegram_token": "8097876545:AAFYhmc2_vcZYVBvuq-JfOKaqVcmSdfx3AU",
+  "connection_string": "Host=localhost:5432;Username=postgres;Password=admin;Database=test",
+  "admins": [
+    "Artooorcheck"
+  ]
+}
