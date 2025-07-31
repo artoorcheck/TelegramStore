@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16
+    container_name: telegramstore_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./store.sql:/docker-entrypoint-initdb.d/store.sql:ro
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegramstore_api
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__Default=Host=db;Port=5432;Database=mydb;Username=postgres;Password=mypassword
+    ports:
+      - "5000:80"
+    restart: always
+
+volumes:
+  db_data:

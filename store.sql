@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 16.6
--- Dumped by pg_dump version 16.6
+-- Dumped by pg_dump version 17.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -324,12 +324,6 @@ ALTER TABLE ONLY public.user_admin ALTER COLUMN id SET DEFAULT nextval('public.u
 --
 
 COPY public.clients (id, username, client_tg_id) FROM stdin;
-11	gjhjk	gjkhjk
-12	gjhghj	hjkhkj
-13	gjhghj	jhjk
-14	Jamschotik 	Artoorcheck
-15	Александр Дорогов	bboy_dorogov
-16	Artooorcheck 	Artooorcheck
 \.
 
 
@@ -338,11 +332,6 @@ COPY public.clients (id, username, client_tg_id) FROM stdin;
 --
 
 COPY public.orders (id, product_id, user_id, product_count) FROM stdin;
-26	1	15	10
-38	2	16	4
-40	3	16	4
-42	4	14	3
-43	4	14	2
 \.
 
 
@@ -351,12 +340,6 @@ COPY public.orders (id, product_id, user_id, product_count) FROM stdin;
 --
 
 COPY public.products (id, product_name, product_count) FROM stdin;
-1	1kg	15
-4	4kg	5
-2	2kg	4
-3	3kg	4
-5	Пряний самодельный	0
-6	На вкус запредельный	-5
 \.
 
 
@@ -365,9 +348,6 @@ COPY public.products (id, product_name, product_count) FROM stdin;
 --
 
 COPY public.user_admin (id, username, chat_id) FROM stdin;
-1	afsffads	34
-4	Artooorcheck	770763482
-14	Artoorcheck	5654092350
 \.
 
 
