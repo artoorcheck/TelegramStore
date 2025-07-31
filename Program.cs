@@ -1,4 +1,6 @@
 ﻿using TelegramStore.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TelegramGameTest
 {
@@ -6,11 +8,12 @@ namespace TelegramGameTest
     {
         static async Task Main(string[] args)
         {
-            var config = Configuration.Configuration.ReadFromFile(Path.GetFullPath("app.config.json"));
+            using var file = new StreamReader(new FileStream(Path.GetFullPath("app.config.json"), FileMode.Open));
+            dynamic config = JsonConvert.DeserializeObject<dynamic>(file.ReadToEnd());
 
-            var token = config["telegram_token"].Value;
-            var connectionString = config["connection_string"].Value;
-            var telegram = new TelegramAPI.TelegramAPI(token, new DataBase(connectionString), config["admins"].Select(a=>a.Value));
+            var token = (string)(config.telegram_token);
+            var connectionString = (string)config.connection_string;
+            var telegram = new TelegramAPI.TelegramAPI(token, new DataBase(connectionString), ((JArray)config.admins).Select(a => a.ToString()));
             telegram.Start();
             await Task.Delay(-1);
         }
