@@ -104,7 +104,7 @@ namespace TelegramGameTest.TelegramAPI
                     {
                         await _botClient.SendMessage(
                             chatId: chat,
-                            text: $"Забронированно {product.Name} - {val}шт"
+                            text: $"Забронировано {product.Name} - {val}шт"
                         );
 
                         foreach(var (admin, chatId) in await _dataBase.GetAdmins())
@@ -221,7 +221,7 @@ namespace TelegramGameTest.TelegramAPI
 
         private async Task MyOrders(ITelegramBotClient bot, Message message)
         {
-            var text = "У выс пока не броней";
+            var text = "У вас пока нет броней";
             var result = await _dataBase.GetOrderedProducts(message.From.Username);
             if (result.Count() > 0)
                 text = "Вы забронировали:\n" + string.Join(",\n", result
