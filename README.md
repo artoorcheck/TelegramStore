@@ -1,4 +1,4 @@
 //Настроить конфиг
 app.config.json
 //Развернуть приложение
-docker-compose up --build
+docker-compose up -d --build
